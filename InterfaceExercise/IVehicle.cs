@@ -6,9 +6,9 @@ namespace InterfaceExercise
 {
     internal interface IVehicle
     {
-       public bool HasMotor { get; set; }
-       public string BodyColor { get; set; }
-       public bool HasBrakes { get; set; }
-       public int WheelNumber { get; set; }            
+        public bool HasMotor { get; set; }
+        public string BodyColor { get; set; }
+        public bool HasBrakes { get; set; }
+        public int WheelNumber { get; set; }
     }
 }

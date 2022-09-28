@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
+using System.Xml;
+using Newtonsoft.Json;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace InterfaceExercise
 {
@@ -8,7 +13,9 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
-            var t1 = new Truck();          
+            List<IVehicle> vehicleList = new List<IVehicle>();
+
+            var t1 = new Truck();
             t1.LiftSize = 3;
             t1.ShockUpgrade = true;
             t1.HasMotor = true;
@@ -38,39 +45,30 @@ namespace InterfaceExercise
             s1.Mission = "to keep the world adventurous forever";
             s1.Recognizeable = false;
 
+            vehicleList.Add(t1);
+            vehicleList.Add(c1);
+            vehicleList.Add(s1);
+
+            foreach (var iVehicle in vehicleList)
+            {
+                Console.WriteLine(iVehicle.GetType().Name);            //system.reflection
+                Console.WriteLine(JsonConvert.SerializeObject(iVehicle, Formatting.Indented));
+                Console.WriteLine();
+            }
+
+            //works but is messier
+            // static string GetAllProperties(object obj)
+            //{
+            //    return string.Join(" ", obj.GetType()
+            //                                .GetProperties()
+            //                                .Select(prop => prop.GetValue(obj)));
+            //}
 
 
-
-
-           // Public static void Print
-                // is there a method to print all properties?
-
-
-
-
-
-
-            //Creatively display and organize their values
-
-            // method to print each 
-            //method to add to list
-            //method to join different types?
-            // might this work?
-
-//public static string GetAllProperties(object obj)
-//            {
-//                return string.Join(" ", obj.GetType()
-//                                            .GetProperties()
-//                                            .Select(prop => prop.GetValue(obj)));
-//            }
-          
-
-//foreach (Galaxy theGalaxy in vehicleList)
-//            {
-//                Console.WriteLine(GetAllProperties(theGalaxy));
-//            }
-
-
+            //foreach (var listedVehicle in vehicleList)
+            //{
+            //    Console.WriteLine(GetAllProperties(listedVehicle));
+            //}
 
         }
     }

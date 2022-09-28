@@ -6,7 +6,7 @@ namespace InterfaceExercise
 {
     internal interface ICompany
     {
-        public string Mission { get; set;}
+        public string Mission { get; set; }
         public bool Recognizeable { get; set; }
     }
 }
